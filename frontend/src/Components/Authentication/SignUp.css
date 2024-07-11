@@ -1,0 +1,81 @@
+.form{
+   display:flex;
+   
+}
+
+.heading{
+    display: flex;
+    justify-content: center;
+}
+
+.heading h4{
+    color: white;
+    font-size: 25px;
+    position:absolute;
+    text-shadow:#6a3b7d 6px 6px 8px;
+}
+
+.inputs input{
+    border-width: 1px;
+    border-color:#9a3aba;
+    border-radius: 2px;
+    box-shadow:rgb(153, 153, 153) 5px 5px 5px;
+}
+
+.formBorder{
+
+border-width: 2px;
+background-color: #FAFCFE;
+padding: 20px;
+border-radius: 2px;
+box-shadow:rgb(110, 110, 110) 2px 2px 20px;
+}
+
+.form1{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+
+}
+
+.submitButton{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.submitButton button{
+    border:1px;
+    padding:5px;
+    color:white;
+    width: 200px;
+    background-color: #69BF70;
+}
+
+.submitButton :hover{
+    width:210px;
+    height: auto;
+    box-shadow: rgb(152, 152, 152) 5px 5px 20px;
+}
+
+
+.labels{
+    justify-content: center;
+    margin-right: 20px;
+
+}
+
+.label1{
+    margin-bottom: 20px;
+}
+
+.label1 label{
+    text-shadow: rgb(255, 255, 255) 2px 2px 2px;
+    font-family:'poppins',sans-serif;
+    font-weight:500;
+}
+
+.input1{
+    margin-bottom: 18px;
+}

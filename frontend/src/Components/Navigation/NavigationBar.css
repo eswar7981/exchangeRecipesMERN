@@ -1,0 +1,260 @@
+
+.navigation {
+    display: flex;
+    justify-content: end;
+    gap:30px;
+    background-color: #BC808B;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+    margin-right: 35px;
+    padding-left: 10px;
+    padding-right: 20px;
+}
+
+.btn {
+
+   font-weight: 700;
+   color:white;
+}
+
+.btn:hover{
+   
+  background-color:#ED1C24;
+    font-weight: 700;
+    
+}
+
+
+
+.btn button{
+    padding:10px 10px;
+    
+}
+
+.dropbtn {
+    background-color:white;
+    color:black;
+    font-size: 5px;
+    border: none;
+    cursor: pointer;
+  }
+
+  .menu{
+    
+        width: 20px;
+        height: 4px;
+        background-color:black;
+        margin: 2px 0;
+
+      
+  }
+  
+  /* The container <div> - needed to position the dropdown content */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: black;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    justify-content: center;
+  }
+ 
+  .navi{
+    display: flex;
+    background-color:#ED1C24;  
+    width: 100%;
+    height: 30px;
+    background-size: 400px;
+    z-index: 2;
+    margin-top: 0px;
+    position: fixed;
+    top:0px;
+ 
+  }
+
+
+
+
+
+  .checked{
+    color:orange;
+    margin-top: 5px;
+  }
+
+  .videoOuter{
+    position:absolute;
+    display: flex;
+   
+
+  }
+
+  .videoOuter p{
+    color:white;
+
+  }
+
+  .video{
+    
+  }
+
+  video {
+    width: 75%;
+    object-fit: cover;
+    opacity: 0.75;
+    border:solid;
+    border-color: #212121;
+    border-width: 10px;
+    }
+
+  .bg{
+    background-color: #1E1C1C;
+  }
+
+  .figma1{
+    position: absolute; top: 12px; left: 12px; color: #000000;
+  }
+
+.figma2{
+  position: absolute; top: -33px; left: -22px; color: #ff0505;
+}
+
+  .video button{
+    font-size: larger;
+    padding: 0px 10px 0px 10px;
+    border-radius: 20px;
+  }
+
+  
+
+  .content{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .video{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .video button:hover{
+    box-shadow:rgb(137, 137, 137) 1px 1px 50px;
+  }
+
+  .content{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top:0;
+    display:block;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin-top: 40vh;
+
+  }
+
+ 
+
+  
+
+  .unchecked{
+    margin-top:5px;
+
+  }
+
+  .searchFilter{
+    background-color:grey;
+    margin-top: 4px;
+    border-radius: 5px;
+    color:white
+
+  }
+
+  .searchFilter textarea:focus, input:focus{
+    outline: none;
+   
+}
+
+
+  .logo{
+    background-image: repeat;
+    background-size: cover;
+    background-position: center;
+   
+  }
+
+  .Premium button{
+background-color: gold;
+  }
+
+
+  /* Links inside the dropdown */
+  .dropdown-content li {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    width: 200px;
+    justify-content: center;
+  }
+
+  .submit {
+    background-color: #ED1C24;
+    color: white;
+ 
+    
+    border-radius: 5px;
+  
+  }
+
+  .buttonBg{
+    color: #F15A24;
+  }
+
+  .shadow12{
+    box-shadow: 0px 40px 30px 12px rgb(255, 61, 61);
+  }
+  
+ 
+  .search{
+    background-color:  #F15A24;
+  }
+
+
+  
+  /* Change color of dropdown links on hover */
+  .dropdown-content li:hover {background-color: #ED1C24;
+border-radius: 3px;
+color: blue;}
+  
+  /* Show the dropdown menu on hover */
+  .dropdown:hover .dropdown-content {
+    display: block;
+    border:solid;
+
+
+  }
+  
+  /* Change the background color of the dropdown button when the dropdown content is shown */
+  .dropdown:hover .dropbtn {
+    background-color:white;
+    color: black;
+
+  }
+
+ 
+
+
+  .button:hover{
+    background-color:white;
+   
+  }
