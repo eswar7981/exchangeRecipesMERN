@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import "./NavigationBar.css";
 import { useSelector } from "react-redux";
-import navLogo from "../images/navLogo.jpg";
+import navLogo from "../assets/navLogo.jpg";
 const NavigationBar = () => {
   const login = useSelector((state) => state.auth.login);
   const token = useSelector((state) => state.auth.token);

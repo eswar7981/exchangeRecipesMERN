@@ -1,15 +1,15 @@
 import React from "react";
-import navLogo from "../images/navLogo.jpg";
-import food from "../images/food.jpg";
+import navLogo from "../assets/navLogo.jpg";
+import food from "../assets/food.jpg";
 import { NavLink } from "react-router-dom";
-import dessertImage from "../images/desserts.png";
-import breakfastImage from "../images/breakfast.png";
-import curryImage from "../images/curry.png";
-import biryaniImage from "../images/biryani.jpg";
-import milkshakeImage from "../images/milkshake.png";
-import saladImage from "../images/salads.png";
-import soupImage from "../images/soup.jpg";
-import snacks from "../images/food.jpg";
+import dessertImage from "../assets/desserts.png";
+import breakfastImage from "../assets/breakfast.png";
+import curryImage from "../assets/curry.png";
+import biryaniImage from "../assets/biryani.jpg";
+import milkshakeImage from "../assets/milkshake.png";
+import saladImage from "../assets/salads.png";
+import soupImage from "../assets/soup.jpg";
+import snacks from "../assets/food.jpg";
 
 const Feed = () => {
   const recipes = [

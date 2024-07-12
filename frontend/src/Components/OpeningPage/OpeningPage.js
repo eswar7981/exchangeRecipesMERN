@@ -1,15 +1,15 @@
-import React from 'react'
+import React from "react";
 
-import bgVideo from "../images/bg.mp4";
-import { useNavigate } from 'react-router-dom';
+import bgVideo from "../assets/bg.mp4";
+import { useNavigate } from "react-router-dom";
 
 const OpeningPage = () => {
- const navigate=useNavigate()
+  const navigate = useNavigate();
 
-  const submitHandler=(e)=>{
-    e.preventDefault()
-    navigate('/home')
-  }
+  const submitHandler = (e) => {
+    e.preventDefault();
+    navigate("/home");
+  };
 
   return (
     <div>
@@ -26,11 +26,13 @@ const OpeningPage = () => {
           <h3 style={{ fontSize: "40px", fontWeight: "bold" }}>
             Discover Quick & Easy Recipes
           </h3>
-          <button  onClick={submitHandler} style={{ backgroundColor: "green" }}>Explore</button>
+          <button onClick={submitHandler} style={{ backgroundColor: "green" }}>
+            Explore
+          </button>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default OpeningPage
+export default OpeningPage;

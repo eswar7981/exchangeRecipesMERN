@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { v4 as uuid4 } from "uuid";
 import { ReactReduxContext, useSelector } from "react-redux";
-import chef from "../images/chef.png";
-import navLogo from "../images/navLogo.jpg";
-import recipeLogo from "../images/createRecipe.jpg";
+
+import recipeLogo from "../assets/createRecipe.jpg";
 import { json, useNavigate } from "react-router-dom";
 const CreateANewRecipe = () => {
   const [image, setImage] = useState();

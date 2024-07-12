@@ -3,8 +3,8 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-import bgImage from "../images/desserts.png";
-import ShowCollections from "../Features/ShowCollections";
+import bgImage from "../assets/desserts.png";
+import ShowCollections from "../UserFeatures/ShowCollections";
 import { Rating } from "@material-tailwind/react";
 import _, { over } from "lodash";
 

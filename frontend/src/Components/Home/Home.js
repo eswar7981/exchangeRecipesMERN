@@ -1,8 +1,7 @@
 import React from "react";
-import Feed from "./Feed";
-import SearchRecipe from "./SearchRecipe";
+import Feed from "../GeneralFeatures/Feed";
+import SearchRecipe from "../GeneralFeatures/SearchRecipe";
 
-import bgVideo from "../images/bg.mp4";
 const home = () => {
   return (
     <div className="bg-grey-500">

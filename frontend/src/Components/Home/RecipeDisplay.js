@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 
-import food from "../images/food.jpg";
+import food from "../assets/food.jpg";
 
 const RecipeDisplay = (recipes) => {
 

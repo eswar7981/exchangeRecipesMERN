@@ -3,10 +3,6 @@ const bcrypt = require("bcrypt");
 const { response, query } = require("express");
 const jwt = require("jsonwebtoken");
 
-const generateToken = (id) => {
-  return jwt.sign({ userId: id }, `secretkey`);
-};
-
 exports.removeUser = (req, response) => {
   const token = req.body.token;
   const id = jwt.verify(token, "secretkey").userId;
@@ -36,23 +32,7 @@ exports.removeUser = (req, response) => {
   response.json({ status: "success" });
 };
 
-exports.login = (req, response) => {
-  const { email: email, password: password } = req.body;
 
-  const query = `select * from public."Admin" where "email"='${email}' and "password"='${password}'`;
-  client.query(query, (err, res) => {
-    if (!err) {
-      if (res.rows.length == 1) {
-        response.json({ status: "success" });
-      } else {
-        response.json({ status: "failed" });
-      }
-    } else {
-      console.log(err);
-      S;
-    }
-  });
-};
 
 exports.deleteRecipe = (req, response) => {
   const recipeId = req.body.recipeId;

@@ -1,14 +1,12 @@
 const express = require("express");
 const authenticationRoutes = express.Router();
-const adminController = require("../controllers/adminController");
-const userController = require("../controllers/userController");
+const adminAuthController = require("../controllers/adminAuthenticationController");
+const userAuthenticationController = require("../controllers/userAuthenticationController");
 
-authenticationRoutes.post("/user/sign-up", userController.signUp);
+authenticationRoutes.post("/user/sign-up", userAuthenticationController.signUp);
 
-authenticationRoutes.post("/user/login", userController.login);
+authenticationRoutes.post("/user/login", userAuthenticationController.login);
 
-
-authenticationRoutes.post("/admin/login", adminController.login);
-
+authenticationRoutes.post("/admin/login", adminAuthController.login);
 
 module.exports = authenticationRoutes;

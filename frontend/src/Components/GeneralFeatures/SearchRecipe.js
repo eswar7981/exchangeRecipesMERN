@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import headerImg from "../images/bg.jpg";
+import headerImg from "../assets/bg.jpg";
 import { appActions } from "../Store/AppStore";
 import { useNavigate } from "react-router-dom";
 

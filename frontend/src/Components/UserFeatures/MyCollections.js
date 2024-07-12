@@ -7,7 +7,7 @@ import { appActions } from "../Store/AppStore";
 
 const MyCollections = () => {
   const token = useSelector((state) => state.auth.token);
-  const dispatch=useDispatch()
+  const dispatch = useDispatch();
   const [collections, setCollections] = useState();
   const [newCollectionDetails, setNewCollectionDetails] = useState({
     name: "",
@@ -27,16 +27,17 @@ const MyCollections = () => {
         return res.json();
       })
       .then((res) => {
-        const collectionNames=res.collections.map((collection)=>collection.name)
-        const updatedNames=collectionNames.filter((item,
-          index) => collectionNames.indexOf(item) === index)
-          
-        dispatch(appActions.setCollection(updatedNames))
+        const collectionNames = res.collections.map(
+          (collection) => collection.name
+        );
+        const updatedNames = collectionNames.filter(
+          (item, index) => collectionNames.indexOf(item) === index
+        );
+
+        dispatch(appActions.setCollection(updatedNames));
         setCollections(updatedNames);
       });
   }, [isFormActive]);
-
-
 
   const nameHandler = (e) => {
     setNewCollectionDetails({

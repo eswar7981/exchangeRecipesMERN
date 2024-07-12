@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 
-import food from "../images/food.jpg";
+import food from "../assets/food.jpg";
 
 const SearchResult = () => {
   const navigate = useNavigate();
