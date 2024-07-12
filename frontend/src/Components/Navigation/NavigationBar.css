@@ -175,8 +175,8 @@
     background-color:grey;
     margin-top: 4px;
     border-radius: 5px;
-    color:white
-
+    color:white;
+    z-index: 444;
   }
 
   .searchFilter textarea:focus, input:focus{

@@ -14,6 +14,19 @@ exports.getRecipe = (req, response) => {
   });
 };
 
+exports.getReviews = (req, response) => {
+  const recipeId = req.query.recipeId;
+  const query = `select * from public."Reviews" where "recipe_id"='${recipeId}'`;
+
+  client.query(query, (err, res) => {
+    if (!err) {
+      response.send({ reviews: res.rows });
+    } else {
+      console.log(err);
+    }
+  });
+};
+
 exports.getRecipes = (req, response) => {
   const category = req.query.category;
 
@@ -28,9 +41,8 @@ exports.getRecipes = (req, response) => {
 };
 
 exports.searchRecipe = (req, response) => {
-
   const {
-    name:name,
+    name: name,
     category: category,
     duration: duration,
     difficultyLevel: difficultyLevel,
@@ -39,6 +51,8 @@ exports.searchRecipe = (req, response) => {
     tag: tag,
     type: type,
   } = req.body;
+
+  console.log(name,'rererer')
   const query = `select * from public."Recipe"
     where "name" Like '%${name}%' and
    "category" Like '%${category}%' and
@@ -52,7 +66,7 @@ exports.searchRecipe = (req, response) => {
 
   client.query(query, (err, res) => {
     if (!err) {
-      response.send(res.rows)
+      response.send(res.rows);
     } else {
       console.log(err);
     }

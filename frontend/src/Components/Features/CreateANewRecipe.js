@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { v4 as uuid4 } from "uuid";
 import { ReactReduxContext, useSelector } from "react-redux";
 import chef from "../images/chef.png";
 import navLogo from "../images/navLogo.jpg";
 import recipeLogo from "../images/createRecipe.jpg";
-import { useNavigate } from "react-router-dom";
+import { json, useNavigate } from "react-router-dom";
 const CreateANewRecipe = () => {
+  const [image, setImage] = useState();
   const token = useSelector((state) => state.auth.token);
   const [veg, setVeg] = useState(true);
   const [nonVeg, setNonVeg] = useState(false);
@@ -43,7 +45,7 @@ const CreateANewRecipe = () => {
     "Curry",
     "Biryani",
     "Dessert",
-    "Salad"
+    "Salad",
   ];
 
   const [showCategory, setShowCategory] = useState(false);
@@ -153,6 +155,28 @@ const CreateANewRecipe = () => {
     setIngredient("");
   };
 
+  const [postImage, setPostImage] = useState({
+    myFile: "",
+  });
+
+  const convertToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+      fileReader.onload = () => {
+        resolve(fileReader.result);
+      };
+      fileReader.onerror = (error) => {
+        reject(error);
+      };
+    });
+  };
+  const handleFileUpload = async (e) => {
+    const file = e.target.files[0];
+    const base64 = await convertToBase64(file);
+    setPostImage({ ...postImage, myFile: base64 });
+  };
+
   const removeIngredient = (e, ind) => {
     e.preventDefault();
     const updatedIngredients = recipeDetails.ingredients.filter(
@@ -174,7 +198,7 @@ const CreateANewRecipe = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log(token)
+    console.log(token);
     console.log(recipeDetails);
     fetch("http://localhost:5000/user/create-recipe", {
       method: "POST",
@@ -186,11 +210,12 @@ const CreateANewRecipe = () => {
         category: recipeDetails.category.toLowerCase(),
         cuisine: recipeDetails.cuisine.toLowerCase(),
         servings: recipeDetails.servings.toLowerCase(),
-        procedure: recipeDetails.procedure.toLowerCase(),
+        procedure: recipeDetails.procedure,
         ingredients: recipeDetails.ingredients.toString().toLowerCase(),
         tags: recipeDetails.tags.toString().toLowerCase(),
         type: recipeDetails.type.toLowerCase(),
         duration: recipeDetails.duration.toLowerCase(),
+        image: postImage.myFile,
       }),
       headers: {
         "Content-Type": "application/json",
@@ -200,7 +225,24 @@ const CreateANewRecipe = () => {
         return res.json();
       })
       .then((res) => {
-        console.log(res);
+        if (res.status == "success") {
+          setRecipeDetails({
+            name: "",
+            cuisine: "",
+            type: "veg",
+            servings: "",
+            duration: "below 15 min",
+            difficultyLevel: "easy",
+            ingredients: [],
+            image: "",
+            procedure: "",
+            tags: [],
+            category: "",
+            preferences: "no-preferences",
+          });
+
+          navigate('/home')
+        }
       });
   };
 
@@ -214,7 +256,7 @@ const CreateANewRecipe = () => {
           🡰
         </button>
       </div>
-      <form
+      <form onSubmit={submitHandler}
         className="p-2  logo max-w-max mx-auto border border-2 rounded-lg px-64  bg-white"
         style={{ backgroundImage: `url(${recipeLogo})` }}
       >
@@ -235,6 +277,7 @@ const CreateANewRecipe = () => {
             Title
           </label>
           <input
+          required
             placeholder="dum biryani, vanilla cake"
             value={recipeDetails.name}
             onChange={nameHandler}
@@ -247,6 +290,7 @@ const CreateANewRecipe = () => {
             Cuisine
           </label>
           <input
+            required
             placeholder="Indian, Chinese, Korean"
             value={recipeDetails.cuisine}
             onChange={cuisineHandler}
@@ -262,6 +306,7 @@ const CreateANewRecipe = () => {
           <div className="justify-center text-center">
             <div className="flex">
               <input
+               
                 className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                 value={recipeDetails.category}
               ></input>
@@ -303,6 +348,7 @@ const CreateANewRecipe = () => {
         <div className="flex gap-5">
           <div class="flex items-center mb-4">
             <input
+             
               checked={veg}
               onChange={typeChange}
               id="default-checkbox"
@@ -320,6 +366,7 @@ const CreateANewRecipe = () => {
 
           <div class="flex items-center mb-4">
             <input
+             
               checked={nonVeg}
               onChange={typeChange}
               id="checked-checkbox"
@@ -342,6 +389,7 @@ const CreateANewRecipe = () => {
           </label>
           <div className="flex">
             <input
+              required
               className="border rounded-sm"
               value={recipeDetails.preferences}
             ></input>
@@ -376,6 +424,7 @@ const CreateANewRecipe = () => {
             Servings
           </label>
           <input
+            required
             placeholder="4-5"
             value={recipeDetails.servings}
             onChange={servingsHandler}
@@ -389,6 +438,7 @@ const CreateANewRecipe = () => {
           </label>
           <div className="flex">
             <input
+              required
               className="border rounded-sm"
               value={recipeDetails.duration}
             ></input>
@@ -429,6 +479,7 @@ const CreateANewRecipe = () => {
         <div className="flex gap-5">
           <div class="flex items-center mb-4">
             <input
+             
               checked={easy}
               onChange={difficultyChange}
               id="default-checkbox"
@@ -446,6 +497,7 @@ const CreateANewRecipe = () => {
 
           <div class="flex items-center mb-4">
             <input
+             
               checked={difficult}
               onChange={difficultyChange}
               id="checked-checkbox"
@@ -483,6 +535,7 @@ const CreateANewRecipe = () => {
           </div>
           <div className="mb-5">
             <input
+             
               placeholder="rice"
               value={ingredient}
               onChange={ingredientHandler}
@@ -501,18 +554,20 @@ const CreateANewRecipe = () => {
           <label className="block mb-2 text-sm  font-bold text-white dark:text-white">
             Procedure
           </label>
-          <input
+          <textarea
+            required
             placeholder="explain the steps involved"
             value={recipeDetails.procedure}
             onChange={procedureHandler}
             type="text"
+            style={{ width: "400px", height: "300px" }}
             className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-          ></input>
+          ></textarea>
         </div>
 
         <div className="mb-4 ">
           <label className="block mb-2 text-sm  font-bold text-white dark:text-white">
-            Tags
+            Tags:
           </label>
           <div className="block ml-10">
             {recipeDetails.tags.map((tag, ind) => (
@@ -529,7 +584,8 @@ const CreateANewRecipe = () => {
           </div>
           <div className="mb-5">
             <input
-              placeholder="#food"
+              
+              placeholder="food"
               value={tag}
               onChange={tagHandler}
               className="border-gray-300 m-5 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-40 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
@@ -545,13 +601,15 @@ const CreateANewRecipe = () => {
 
         <div className="mb-5">
           <label className="block mb-2 text-sm  font-bold text-white dark:text-white">
-            Image
+            Image:
           </label>
           <input
-            value={recipeDetails.image}
-            onChange={imageHandler}
-            type="text"
-            className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+            required
+            onChange={(e) => handleFileUpload(e)}
+            id="image"
+            className="ml-20"
+            type="file"
+            accept=".jpeg, .png, .jpg"
           ></input>
         </div>
 
@@ -559,10 +617,11 @@ const CreateANewRecipe = () => {
           <button
             type="submit"
             className="submit px-24 py-1 mb-4"
-            onClick={submitHandler}
+            
           >
             Submit
           </button>
+         
         </div>
       </form>
     </div>

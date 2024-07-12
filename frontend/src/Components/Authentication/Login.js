@@ -37,11 +37,12 @@ const Login = () => {
         return res.json();
       })
       .then((res) => {
-        console.log(res.status)
-        if(!res.status==='failed'){
+        console.log(res.token1)
+        if(res.token1){
           dispatch(authActions.login());
-          dispatch(authActions.setToken(res.token));
+          dispatch(authActions.setToken(res.token1));
           setLogin(true);
+          dispatch(authActions.setFollowers(res.followers))
           naviagate("/home");
           setTimeout(() => {
             setLogin(false);
@@ -92,13 +93,14 @@ const Login = () => {
                     Your email
                   </label>
                   <input
+                  required
                     onChange={emailHandler}
                     value={loginDetails.email}
                     type="email"
                     name="email"
                     id="email"
                     class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    required=""
+                    required
                   />
                 </div>
                 <div>
@@ -109,6 +111,7 @@ const Login = () => {
                     Password
                   </label>
                   <input
+                  required
                     onChange={passwordHandler}
                     value={loginDetails.password}
                     type="password"

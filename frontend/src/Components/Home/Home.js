@@ -6,7 +6,6 @@ import bgVideo from "../images/bg.mp4";
 const home = () => {
   return (
     <div className="bg-grey-500">
-      
       <div className="">
         <SearchRecipe></SearchRecipe>
       </div>

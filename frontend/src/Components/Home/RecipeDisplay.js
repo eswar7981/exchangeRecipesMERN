@@ -11,7 +11,7 @@ console.log(recipes)
   return (
     <>
       {recipes.length == 0 ? (
-        <div className="text-white mt-24">
+        <div className="text-black bg-white mt-52">
           <p>no recipes in this category</p>
         </div>
       ) : (
@@ -25,8 +25,9 @@ console.log(recipes)
                 <NavLink to={`/recipes/${recipe.category}/${recipe.id}`}>
                   <div>
                     <img
-                      className="border border-2 border-slate-500 w-100 h-40 "
-                      src={food}
+                      className="border border-2 ml-5 border-slate-500 w-100 h-40 "
+                      src={recipe.image}
+                      style={{ width: "200px", height: "160px" }}
                     ></img>
                     <div className="flex gap-3">
                       <p>recipe:</p>
@@ -63,7 +64,6 @@ console.log(recipes)
                       <span class="fa fa-star unchecked"></span>
                       <span class="fa fa-star unchecked"></span>
 
-                      <p>(10)</p>
                     </div>
                   </div>
                 </NavLink>

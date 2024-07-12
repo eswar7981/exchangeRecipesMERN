@@ -28,8 +28,11 @@ const MyCollections = () => {
       })
       .then((res) => {
         const collectionNames=res.collections.map((collection)=>collection.name)
-        dispatch(appActions.setCollection(collectionNames))
-        setCollections(res.collections);
+        const updatedNames=collectionNames.filter((item,
+          index) => collectionNames.indexOf(item) === index)
+          
+        dispatch(appActions.setCollection(updatedNames))
+        setCollections(updatedNames);
       });
   }, [isFormActive]);
 
@@ -107,10 +110,10 @@ const MyCollections = () => {
             {collections &&
               collections.map((collection) => (
                 <button
-                  onClick={(e) => navigateMe(e, collection.name)}
+                  onClick={(e) => navigateMe(e, collection)}
                   className="col-span-2 text-xl rounded-lg min-h-[200px] bg-red-500 "
                 >
-                  {collection.name}
+                  {collection}
                 </button>
               ))}
           </div>

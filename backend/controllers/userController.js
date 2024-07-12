@@ -22,18 +22,44 @@ exports.signUp = (req, res) => {
   });
 };
 
-exports.login = (req, response) => {
+exports.uploadRecipeImage = (req, response) => {
+  response.json({ imageData: req.body.image });
+};
+
+exports.addReview = (req, response) => {
+  const { rating: rating, review: review, recipeId: recipeId } = req.body;
+
+  const query1 = `select "userName" from public."User" where "id"='${req.id}' `;
+
+  client.query(query1, (err, res) => {
+    if (!err) {
+      const query2 = `insert into public."Reviews" ("recipe_id","rating","review","userName") values ('${recipeId}','${rating}','${review}','${res.rows[0].userName}')`;
+
+      client.query(query2, (err, resp) => {
+        if (!err) {
+          response.json({ status: "success" });
+        } else {
+          console.log(err);
+        }
+      });
+    } else {
+      console.log(err);
+    }
+  });
+};
+
+exports.login = (req, resp) => {
   const { email: email, password: password } = req.body;
   bcrypt.hash(password, 10, async (err, hash) => {
     const query = `select * from public."User" where "email"='${email}'`;
     client.query(query, (err, res) => {
-   
       if (!err) {
         if (res.rows.length == 0) {
-          response.json({ status: "failed" });
+          resp.json({ status: "failed" });
         } else {
           const token = generateToken(res.rows[0].id);
-          response.json({ token: token, followers: res.rows[0].followers });
+          console.log(token);
+          resp.json({ token1: token,followers:res.rows[0].followers });
         }
       } else {
         console.log(err);
@@ -102,13 +128,28 @@ exports.getMyRecipes = (req, response) => {
 };
 
 exports.followAuthor = (req, response) => {
-  const query = `insert into public."Following" ("authorId","userId") values ('${req.body.author}','${req.id}')`;
+  const query1 = `select "followers" from public."User" where "id"='${req.id}'`;
 
-  client.query(query, (err, res) => {
+  client.query(query1, (err, res) => {
     if (err) {
       console.log(err);
     } else {
-      response.json({ status: "success" });
+      const updatedFollowers = res.rows[0].followers + 1;
+      const query2 = `update public."User" set "followers"='${updatedFollowers}' where "id"='${req.id}'`;
+      client.query(query2, (err, res) => {
+        if (err) {
+          console.log(err);
+        } else {
+          const query3 = `insert into public."Following" ("authorId","userId") values ('${req.body.author}','${req.id}')`;
+          client.query(query3, (err, res) => {
+            if (err) {
+              console.log(err);
+            } else {
+              response.json({ status: "success" });
+            }
+          });
+        }
+      });
     }
   });
 };
@@ -168,6 +209,7 @@ exports.getFollowers = (req, response) => {
 
 exports.createRecipe = (req, response) => {
   console.log(req.id);
+
   const {
     name: name,
     cuisine: cuisine,
@@ -180,8 +222,9 @@ exports.createRecipe = (req, response) => {
     procedure: procedure,
     difficulty: difficulty,
     preferences: preferences,
+    image: image,
   } = req.body;
-  const query1 = `insert into public."Recipe" ("name","cuisine","category","servings","type","procedure","duration","keywords","ingredients","difficulty","preferences","userId") values('${name}','${cuisine}','${category}','${servings}','${type}','${procedure}','${duration}','${tags}','${ingredients}','${difficulty}','${preferences}','${req.id}')`;
+  const query1 = `insert into public."Recipe" ("name","cuisine","category","servings","type","procedure","duration","keywords","ingredients","difficulty","preferences","userId","image") values('${name}','${cuisine}','${category}','${servings}','${type}','${procedure}','${duration}','${tags}','${ingredients}','${difficulty}','${preferences}','${req.id}','${image}')`;
   const query2 = `insert into public."MyRecipes" ("userId","recipe_id") values('${req.id}','rere') `;
   client.query(query1, (err, res) => {
     if (err) {

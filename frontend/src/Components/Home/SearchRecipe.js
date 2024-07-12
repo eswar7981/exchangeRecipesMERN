@@ -28,7 +28,7 @@ const SearchRecipe = () => {
   const [showType, setShowType] = useState(false);
   const [showPreferences, setShowPreferences] = useState(false);
   const tags = ["None", "food", "yummy", "delicious"];
-  const preferences = ["None", "gluten-free","peanut-free","lactose-free"];
+  const preferences = ["None", "gluten-free", "peanut-free", "lactose-free"];
   const categories = [
     "None",
     "Soup",
@@ -40,8 +40,8 @@ const SearchRecipe = () => {
   ];
   const ingredients = ["None", "rice", "wheat", "chicken", "eggs", "mutton"];
   const duration = ["None", "below 15 min", "below 30 min", "below 60 min"];
-  const types = ["None", "vegan", "vegetarian", "non-vegetarian"];
-  const difficultyLevel = ["None", "easy", "medium", "hard"];
+  const types = ["None", "vegan", "veg", "non-veg"];
+  const difficultyLevel = ["None", "easy", "difficult"];
 
   const [searchResult, setSearchResult] = useState();
 
@@ -106,6 +106,11 @@ const SearchRecipe = () => {
     setShowIngredient(!showIngredient);
   };
 
+  const nameHandler=(e)=>{
+   
+    setSearchDetails({...searchDetails,['name']:e.target.value})
+  }
+
   const selectDifficultyLevel = (e, index) => {
     e.preventDefault();
 
@@ -164,13 +169,13 @@ const SearchRecipe = () => {
     fetch(`http://localhost:5000/search`, {
       method: "POST",
       body: JSON.stringify({
-        name: searchDetails.name,
+        name: searchDetails.name.toLowerCase(),
         category: searchDetails.category.toLowerCase(),
         duration: searchDetails.duration.toLowerCase(),
         difficultyLevel: searchDetails.difficultyLevel.toLowerCase(),
         ingredient: searchDetails.ingredient.toLowerCase(),
         preferences: searchDetails.preference.toLowerCase(),
-        tag: searchDetails.preference.toLowerCase(),
+        tag: searchDetails.tag.toLowerCase(),
         type: searchDetails.type.toLowerCase(),
       }),
       headers: {
@@ -224,11 +229,13 @@ const SearchRecipe = () => {
           opacity: "0.9",
         }}
       >
-        <div className="relative bgg" style={{ opacity: "1"}}>
+        <div className="relative bgg" style={{ opacity: "1" }}>
           <form class=" mt-5 max-w-lg mx-auto border rounded-full z-10">
             <div class="flex">
               <div class="relative w-full mt-20">
                 <input
+                  value={searchDetails.name}
+                  onChange={nameHandler}
                   type="search"
                   id="search-dropdown"
                   class="block  w-full z-20 text-sm text-gray-900 bg-gray-50 px-4 h-10  rounded-lg py-1 border-s-5 border     "
@@ -261,7 +268,10 @@ const SearchRecipe = () => {
             </div>
           </form>
 
-          <div className=" z-10 mt-2 max-w-max mx-auto" style={{zIndex:'3232'}}>
+          <div
+            className=" z-10 mt-2 max-w-max mx-auto"
+            style={{ zIndex: "3232" }}
+          >
             <h2 style={{ color: "white" }}>Choose</h2>
           </div>
           <div className="mt-6 pb-20 max-w-max mx-auto flex gap-1 ">
@@ -275,7 +285,8 @@ const SearchRecipe = () => {
                 </button>
                 <div>
                   <input
-                    className="searchFilter bg-white text-black  text-center"
+                    style={{ zIndex: 466474764 }}
+                    className="searchFilter  bg-white text-black  text-center"
                     value={searchDetails.category}
                   ></input>
                 </div>
@@ -318,7 +329,9 @@ const SearchRecipe = () => {
                   showDifficultyLevel ? "block" : "hidden"
                 }`}
               >
-              <ul className=" z-10  w-40 text-center bg-black text-white rounded divide-y divide-red-500 shadow border  border-red-500 ">   {difficultyLevel &&
+                <ul className=" z-10  w-40 text-center bg-black text-white rounded divide-y divide-red-500 shadow border  border-red-500 ">
+                  {" "}
+                  {difficultyLevel &&
                     difficultyLevel.map((difficulty, index) => (
                       <li>
                         <button
@@ -352,7 +365,9 @@ const SearchRecipe = () => {
                   showIngredient ? "block" : "hidden"
                 }`}
               >
-               <ul className=" z-10  w-40 text-center bg-black text-white rounded divide-y divide-red-500 shadow border  border-red-500 ">   {ingredients &&
+                <ul className=" z-10  w-40 text-center bg-black text-white rounded divide-y divide-red-500 shadow border  border-red-500 ">
+                  {" "}
+                  {ingredients &&
                     ingredients.map((ingredient, index) => (
                       <li>
                         <button onClick={(e) => selectIngredient(e, index)}>
@@ -384,7 +399,9 @@ const SearchRecipe = () => {
                   showDuration ? "block" : "hidden"
                 }`}
               >
-              <ul className=" z-10  w-40 text-center bg-black text-white rounded border-red-500 divide-y divide-red-500 shadow border  border-red-500 ">    {duration &&
+                <ul className=" z-10  w-40 text-center bg-black text-white rounded border-red-500 divide-y divide-red-500 shadow border  border-red-500 ">
+                  {" "}
+                  {duration &&
                     duration.map((duration, index) => (
                       <li>
                         <button onClick={(e) => selectDuration(e, index)}>
@@ -416,7 +433,9 @@ const SearchRecipe = () => {
                   showPreferences ? "block" : "hidden"
                 }`}
               >
-               <ul className=" z-10  w-40 text-center bg-black text-white rounded divide-y divide-red-500 shadow border  border-red-500 ">   {preferences &&
+                <ul className=" z-10  w-40 text-center bg-black text-white rounded divide-y divide-red-500 shadow border  border-red-500 ">
+                  {" "}
+                  {preferences &&
                     preferences.map((preference, index) => (
                       <li>
                         <button onClick={(e) => selectPreference(e, index)}>
@@ -448,7 +467,9 @@ const SearchRecipe = () => {
                   showTag ? "block" : "hidden"
                 }`}
               >
-             <ul className=" z-10  w-40 text-center bg-black text-white rounded divide-y divide-red-500 shadow border  border-red-500 ">    {tags &&
+                <ul className=" z-10  w-40 text-center bg-black text-white rounded divide-y divide-red-500 shadow border  border-red-500 ">
+                  {" "}
+                  {tags &&
                     tags.map((tag, index) => (
                       <li>
                         <button onClick={(e) => selectTag(e, index)}>
@@ -480,7 +501,9 @@ const SearchRecipe = () => {
                   showType ? "block" : "hidden"
                 }`}
               >
-                <ul className=" z-10  w-40 text-center bg-black text-white rounded divide-y divide-red-500 shadow border  border-red-500 "> {types &&
+                <ul className=" z-10  w-40 text-center bg-black text-white rounded divide-y divide-red-500 shadow border  border-red-500 ">
+                  {" "}
+                  {types &&
                     types.map((type, index) => (
                       <li>
                         <button onClick={(e) => selectType(e, index)}>

@@ -38,8 +38,9 @@ const SearchResult = () => {
               <NavLink to={`/recipes/${recipe.category}/${recipe.id}`}>
                 <div>
                   <img
-                    className="border border-2 border-slate-500 w-100 h-40 "
-                    src={food}
+                    className="border m;-5 border-2 border-slate-500 w-100 h-40 "
+                    src={recipe.image}
+                      style={{ width: "200px", height: "160px" }}
                   ></img>
                   <div className="flex gap-3">
                     <p>recipe:</p>

@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
 const userController = require("../controllers/userController");
-
+const multer=require('multer')
 router.use("/", (req, res, next) => {
   const tokenBody = req.body.token;
   const tokenHeader = req.headers.token;
@@ -16,8 +16,12 @@ router.use("/", (req, res, next) => {
     next();
   }
 });
-
 router.post("/create-recipe", userController.createRecipe);
+
+
+router.post("/review", userController.addReview);
+
+router.post("/upload-image",userController.uploadRecipeImage);
 
 router.get("/favourites", userController.getFavourites);
 

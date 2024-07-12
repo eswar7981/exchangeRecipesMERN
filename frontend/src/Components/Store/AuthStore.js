@@ -21,7 +21,12 @@ const authSlice = createSlice({
     setToken(state, action) {
       state.token = action.payload;
     },
-
+    userLogOut(state){
+     state.login=false
+     state.followers=0
+     state.token=''
+      
+    },
     setFollowers(state, action) {
       state.followers = action.payload;
     },
