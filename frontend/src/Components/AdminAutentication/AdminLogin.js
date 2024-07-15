@@ -20,9 +20,10 @@ const AdminLogin = () => {
   };
 
   const submitHandler = (e) => {
-    e.preventDefault();
+    e.preventDefault()
+      console.log(process.env.BACKEND_URL);
     console.log(loginDetails);
-    fetch("https://exchangerecipespern.onrender.com/authentication/admin/login", {
+    fetch(`${process.env.BACKEND_URL}/authentication/admin/login`, {
       method: "POST",
       body: JSON.stringify({
         email: loginDetails.email,
