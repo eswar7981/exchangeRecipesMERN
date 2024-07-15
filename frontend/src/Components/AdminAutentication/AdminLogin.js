@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { authActions } from "../Store/AuthStore";
 import { appActions } from "../Store/AppStore";
 
+
 const AdminLogin = () => {
   const dispatch = useDispatch();
   const naviagate = useNavigate();
@@ -21,9 +22,9 @@ const AdminLogin = () => {
 
   const submitHandler = (e) => {
     e.preventDefault()
-      console.log(process.env.BACKEND_URL);
+      console.log(process.env.URL,process.env.DATABASE);
     console.log(loginDetails);
-    fetch(`https://exchangerecipespern.onrender.com/authentication/admin/login`, {
+    fetch(`${process.env.URL}/authentication/admin/login`, {
       method: "POST",
       body: JSON.stringify({
         email: loginDetails.email,
