@@ -31,7 +31,7 @@ const SignUp = () => {
     navigate('/login')
     if (signUpDetails.password === signUpDetails.confirmPassword) {
       console.log(signUpDetails);
-      fetch("http://localhost:5000/authentication/user/sign-up", {
+      fetch("https://exchangerecipespern.onrender.com/authentication/user/sign-up", {
         method: "POST",
         body: JSON.stringify({
           name: signUpDetails.name,
