@@ -22,7 +22,7 @@ const AdminLogin = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     console.log(loginDetails);
-    fetch("http://localhost:5000/authentication/admin/login", {
+    fetch("https://exchangerecipespern.onrender.com/authentication/admin/login", {
       method: "POST",
       body: JSON.stringify({
         email: loginDetails.email,
