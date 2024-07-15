@@ -1,13 +1,13 @@
 const { HostAddress } = require('mongodb')
 const {Client}=require('pg')
-require('dotenv').config()
 
+require('dotenv').config()
 
 const client=new Client({
     host:process.env.LOCALHOST,
     user:process.env.USER,
     port:process.env.PORT,
-    password:process.env.PASSWORD,
+    password:`@Eswar158`,
     database:process.env.DATABASE
 
 })

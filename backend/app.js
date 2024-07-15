@@ -10,7 +10,6 @@ const authRoutes=require('./routes/authenticationRoutes')
 const AdminRoutes = require("./routes/adminRoutes");
 
 
-
 client.connect();
 
 app.use(cors());

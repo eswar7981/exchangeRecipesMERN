@@ -45,6 +45,8 @@ router.post(
   userCollectionController.addARecipeIntoCollection
 );
 
+router.get("/searchAuthorRecipes",userCollectionController.getAuthorRecipes)
+
 router.post("/add-collection", userCollectionController.createCollection);
 
 router.get(

@@ -1,7 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+
 
 const Following = () => {
   const [following, setFollowing] = useState();
@@ -32,8 +33,7 @@ const Following = () => {
   };
 
   return (
-    <div className="">
-    
+    <div className=" bg-white">
       <div className="mt-10 fixed top-1/3 ">
         <button
           onClick={backButton}
@@ -43,15 +43,19 @@ const Following = () => {
         </button>
       </div>
 
-      <div className="bg-black  mt-20 min-w-20 text-black">
+      <div className=" ml-24  mt-20 min-w-20 text-black">
         {following &&
           following.map((author) => (
-            <div className="flex ml-24 max-auto-max items-center">
+            <div className="flex gap-20 ml-24 max-auto-max items-center">
               <p></p>
-              <p className="p-5  bg-red-500 border rounded-lg">
+              <p className="p-5  bg-red-500 text-white  border rounded-lg">
                 {author.userName}
               </p>
-            
+              <NavLink to={`/following/${author.userName}`}>
+                <button className="bg-red-400 text-white p-4 border rounded-lg">
+                  click to see recipes
+                </button>
+              </NavLink>
             </div>
           ))}
       </div>

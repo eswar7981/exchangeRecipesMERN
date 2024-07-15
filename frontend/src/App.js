@@ -13,14 +13,14 @@ import Favourites from "./Components/UserFeatures/Favourites";
 import Following from "./Components/UserFeatures/Following";
 import MyCollections from "./Components/UserFeatures/MyCollections";
 
-
 import RecipeDisplay from "./Components/Home/RecipeDisplay";
 import OpeningPage from "./Components/OpeningPage/OpeningPage";
 import ShowCategoryRecipes from "./Components/Home/ShowCategoryRecipes";
-import CompleteRecipeDisplay from "./Components/Home/CompleteRecipeDisplay";
+import CompleteRecipeDisplay from "./Components/GeneralFeatures/CompleteRecipeDisplay";
 import ShowCollections from "./Components/UserFeatures/ShowCollections";
 import AdminLogin from "./Components/AdminAutentication/AdminLogin";
 import SearchResult from "./Components/GeneralFeatures/SearchResult";
+import ShowAuthorRecipes from "./Components/UserFeatures/ShowAuthorRecipes";
 function App() {
   return (
     <div style={{ backgroundColor: "#3A3B3C" }}>
@@ -36,6 +36,9 @@ function App() {
             path="/recipes/my-collection/:recipeId"
             element={<CompleteRecipeDisplay></CompleteRecipeDisplay>}
           ></Route>
+          <Route path="/following/:authorName"           element={<ShowAuthorRecipes></ShowAuthorRecipes>}>
+
+          </Route>
           <Route
             path="/recipes/:category"
             element={<ShowCategoryRecipes></ShowCategoryRecipes>}

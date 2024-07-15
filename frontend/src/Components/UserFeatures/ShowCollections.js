@@ -33,7 +33,7 @@ const ShowCollections = () => {
 
   return (
     <>
-      <div className="grid m-4  grid-cols-12 grid-rows-12 gap-2  items-center "></div>
+      <div className="grid pt-10 m-4 bg-slate-400   grid-cols-12 grid-rows-12 gap-2  items-center ">
       <div className="mt-10 fixed top-1/3 ">
         <button
           onClick={backButton}
@@ -46,12 +46,13 @@ const ShowCollections = () => {
         collectionDetails.map((recipe) => (
           <div>
             <NavLink to={`/recipes/${recipe.category}/${recipe.id}`}>
-              <div className="ml-20  flex items-center text-center col-span-2 w-40 text-xl rounded-lg min-h-[200px] bg-red-500 ">
+              <div className="ml-20 text-white  flex items-center text-center col-span-2 w-40 text-xl rounded-lg min-h-[200px] bg-red-500 ">
                 <p className="ml-10">{recipe.name}</p>
               </div>
             </NavLink>
           </div>
         ))}
+        </div>
     </>
   );
 };

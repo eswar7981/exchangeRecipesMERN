@@ -94,7 +94,7 @@ const MyCollections = () => {
         </button>
       </div>
       {!isFormActive && (
-        <div className="ml-10 text-white mt-20">
+        <div className="ml-10 text-white ">
           <h1 className="text-black max-w-max mx-auto mb-4 text-xl font-semibold">
             Collections
           </h1>
