@@ -25,6 +25,11 @@
     
 }
 
+.top2{
+  max-height: 90px;
+  overflow-x:hidden;
+}
+
 
 
 .btn button{
