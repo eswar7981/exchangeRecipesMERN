@@ -199,7 +199,7 @@ const CreateANewRecipe = () => {
     e.preventDefault();
     console.log(token);
     console.log(recipeDetails);
-    fetch("http://localhost:5000/user/create-recipe", {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/user/create-recipe`, {
       method: "POST",
       body: JSON.stringify({
         token: token,
