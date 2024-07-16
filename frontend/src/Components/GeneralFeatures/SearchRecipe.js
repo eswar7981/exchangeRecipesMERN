@@ -166,7 +166,7 @@ const SearchRecipe = () => {
     e.preventDefault();
     console.log(searchDetails);
 
-    fetch(`http://localhost:5000/search`, {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/search`, {
       method: "POST",
       body: JSON.stringify({
         name: searchDetails.name.toLowerCase(),
