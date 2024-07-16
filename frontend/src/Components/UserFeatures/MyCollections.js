@@ -16,7 +16,7 @@ const MyCollections = () => {
   const [isFormActive, setIsFormActive] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/user/get-collections`, {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/user/get-collections`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -48,7 +48,7 @@ const MyCollections = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    fetch("http://localhost:5000/user/add-collection", {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/user/add-collection`, {
       method: "POST",
       body: JSON.stringify({
         token: token,
