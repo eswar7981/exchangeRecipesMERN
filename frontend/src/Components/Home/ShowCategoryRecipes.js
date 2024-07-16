@@ -10,7 +10,7 @@ const ShowCategoryRecipes = () => {
 
   useEffect(() => {
     console.log(category)
-    fetch(`http://localhost:5000/search/?category=${category.toLowerCase()}`, {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/search/?category=${category.toLowerCase()}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
