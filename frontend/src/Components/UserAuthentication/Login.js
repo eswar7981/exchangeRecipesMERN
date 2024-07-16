@@ -23,7 +23,7 @@ const Login = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     console.log(loginDetails);
-    fetch("http://localhost:5000/authentication/user/login", {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/authentication/user/login`, {
       method: "POST",
       body: JSON.stringify({
         email: loginDetails.email,
