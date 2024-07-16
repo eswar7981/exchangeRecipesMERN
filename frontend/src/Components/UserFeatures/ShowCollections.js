@@ -9,7 +9,7 @@ const ShowCollections = () => {
   const [collectionDetails, setCollectionDetails] = useState();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/user/get-collection-details`, {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/user/get-collection-details`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
