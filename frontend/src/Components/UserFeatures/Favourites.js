@@ -15,7 +15,7 @@ const Favourites = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/user/favourites`, {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/user/favourites`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
