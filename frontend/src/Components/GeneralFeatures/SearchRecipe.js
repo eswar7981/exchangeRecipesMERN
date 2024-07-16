@@ -296,7 +296,7 @@ const SearchRecipe = () => {
                   showCategory ? "block" : "hidden"
                 }`}
               >
-                <ul className=" z-10  w-40 text-center bg-black text-white rounded divide-y divide-red-500 shadow border  border-red-500 ">
+                <ul className="top2 z-10  w-40 text-center bg-black text-white rounded divide-y divide-red-500 shadow border  border-red-500 ">
                   {categories &&
                     categories.map((category, index) => (
                       <li>
@@ -329,7 +329,7 @@ const SearchRecipe = () => {
                   showDifficultyLevel ? "block" : "hidden"
                 }`}
               >
-                <ul className=" z-10  w-40 text-center bg-black text-white rounded divide-y divide-red-500 shadow border  border-red-500 ">
+                <ul className="top2 z-10  w-40 text-center bg-black text-white rounded divide-y divide-red-500 shadow border  border-red-500 ">
                   {" "}
                   {difficultyLevel &&
                     difficultyLevel.map((difficulty, index) => (
@@ -365,7 +365,7 @@ const SearchRecipe = () => {
                   showIngredient ? "block" : "hidden"
                 }`}
               >
-                <ul className=" z-10  w-40 text-center bg-black text-white rounded divide-y divide-red-500 shadow border  border-red-500 ">
+                <ul className="top2 z-10  w-40 text-center bg-black text-white rounded divide-y divide-red-500 shadow border  border-red-500 ">
                   {" "}
                   {ingredients &&
                     ingredients.map((ingredient, index) => (
@@ -399,7 +399,7 @@ const SearchRecipe = () => {
                   showDuration ? "block" : "hidden"
                 }`}
               >
-                <ul className=" z-10  w-40 text-center bg-black text-white rounded border-red-500 divide-y divide-red-500 shadow border  border-red-500 ">
+                <ul className="top2 z-10  w-40 text-center bg-black text-white rounded border-red-500 divide-y divide-red-500 shadow border  border-red-500 ">
                   {" "}
                   {duration &&
                     duration.map((duration, index) => (
@@ -433,7 +433,7 @@ const SearchRecipe = () => {
                   showPreferences ? "block" : "hidden"
                 }`}
               >
-                <ul className=" z-10  w-40 text-center bg-black text-white rounded divide-y divide-red-500 shadow border  border-red-500 ">
+                <ul className="top2 z-10  w-40 text-center bg-black text-white rounded divide-y divide-red-500 shadow border  border-red-500 ">
                   {" "}
                   {preferences &&
                     preferences.map((preference, index) => (
@@ -467,7 +467,7 @@ const SearchRecipe = () => {
                   showTag ? "block" : "hidden"
                 }`}
               >
-                <ul className=" z-10  w-40 text-center bg-black text-white rounded divide-y divide-red-500 shadow border  border-red-500 ">
+                <ul className="top2 z-10  w-40 text-center bg-black text-white rounded divide-y divide-red-500 shadow border  border-red-500 ">
                   {" "}
                   {tags &&
                     tags.map((tag, index) => (
@@ -501,7 +501,7 @@ const SearchRecipe = () => {
                   showType ? "block" : "hidden"
                 }`}
               >
-                <ul className=" z-10  w-40 text-center bg-black text-white rounded divide-y divide-red-500 shadow border  border-red-500 ">
+                <ul className="top2 z-10  w-40 text-center bg-black text-white rounded divide-y divide-red-500 shadow border  border-red-500 ">
                   {" "}
                   {types &&
                     types.map((type, index) => (
