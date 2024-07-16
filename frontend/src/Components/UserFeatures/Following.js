@@ -11,7 +11,7 @@ const Following = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/user/following`, {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/user/following`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
