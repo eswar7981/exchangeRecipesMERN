@@ -25,7 +25,7 @@ const CompleteRecipeDisplay = (recipe) => {
 
   const removeUser = (e) => {
     e.preventDefault();
-    fetch("http://localhost:5000/admin/remove-user", {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/admin/remove-user`, {
       method: "POST",
       body: JSON.stringify({
         token: login,
@@ -67,7 +67,7 @@ const CompleteRecipeDisplay = (recipe) => {
 
   const followTheAuthor = (e) => {
     e.preventDefault();
-    fetch(`http://localhost:5000/user/follow-author`, {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/user/follow-author`, {
       method: "POST",
       body: JSON.stringify({
         token: login,
@@ -89,7 +89,7 @@ const CompleteRecipeDisplay = (recipe) => {
     e.preventDefault();
     setFavourite(true);
 
-    fetch(`http://localhost:5000/user/add-favourite`, {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/user/add-favourite`, {
       method: "POST",
       body: JSON.stringify({
         token: login,
@@ -108,7 +108,7 @@ const CompleteRecipeDisplay = (recipe) => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/search/details/?recipeId=${recipeId}`, {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/search/details/?recipeId=${recipeId}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -120,7 +120,7 @@ const CompleteRecipeDisplay = (recipe) => {
       .then((res) => {
         console.log(res);
         setRecipeDetails(res.recipe);
-        fetch(`http://localhost:5000/search/reviews/?recipeId=${recipeId}`, {
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/search/reviews/?recipeId=${recipeId}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -143,7 +143,7 @@ const CompleteRecipeDisplay = (recipe) => {
 
   const deleteRecipe = (e) => {
     e.preventDefault();
-    fetch("http://localhost:5000/admin/delete-recipe", {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/admin/delete-recipe`, {
       method: "POST",
       body: JSON.stringify({
         recipeId: recipeDetails.id,
@@ -163,7 +163,7 @@ const CompleteRecipeDisplay = (recipe) => {
 
   const submitReview = (e) => {
     e.preventDefault();
-    fetch("http://localhost:5000/user/review", {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/user/review`, {
       method: "POST",
       body: JSON.stringify({
         token: login,
@@ -188,7 +188,7 @@ const CompleteRecipeDisplay = (recipe) => {
   const submitHandler = (e, name) => {
     e.preventDefault();
     console.log(name);
-    fetch("http://localhost:5000/user/add-recipe-collection", {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/user/add-recipe-collection`, {
       method: "POST",
       body: JSON.stringify({
         token: login,
