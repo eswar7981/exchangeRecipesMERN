@@ -1,3 +1,4 @@
+const client = require("../database/databasePGSql");
 
 exports.login = (req, response) => {
     const { email: email, password: password } = req.body;
