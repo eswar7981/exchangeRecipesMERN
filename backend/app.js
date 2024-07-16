@@ -8,7 +8,9 @@ const client = require("./database/databasePGSql");
 const userRouter = require("./routes/userRoutes");
 const authRoutes=require('./routes/authenticationRoutes')
 const AdminRoutes = require("./routes/adminRoutes");
+require('dotenv').config()
 
+const port=process.env.PORT || 5000
 
 client.connect();
 
@@ -26,4 +28,7 @@ app.use("/search", withOutLoginRoutes);
 
 app.use("/admin", AdminRoutes);
 
-app.listen(5000);
+app.listen(port,()=>{
+  console.log(port)
+}
+);
