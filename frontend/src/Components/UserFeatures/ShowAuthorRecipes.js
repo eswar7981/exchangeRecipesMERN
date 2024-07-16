@@ -12,7 +12,7 @@ const ShowAuthorRecipes = () => {
 
   useEffect(() => {
     fetch(
-      `http://localhost:5000/user/searchAuthorRecipes/?authorName=${authorName}`,
+      `${process.env.REACT_APP_BACKEND_URL}/user/searchAuthorRecipes/?authorName=${authorName}`,
       {
         method: "GET",
         headers: {
