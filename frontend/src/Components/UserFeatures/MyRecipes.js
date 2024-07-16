@@ -8,7 +8,7 @@ const MyRecipes = () => {
   const token = useSelector((state) => state.auth.token);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/user/my-recipes`, {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/user/my-recipes`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
